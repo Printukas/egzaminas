@@ -1,0 +1,44 @@
+/* Bendras bazinis stilius */
+button {
+  padding: 10px 20px;
+  font-size: 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
+  border: 2px solid white;
+  background: transparent;
+  color: white;
+  transition: all 0.3s ease;
+  margin: 5px;
+  min-width: 100px;
+}
+
+/* Hover efektas visiems */
+button:hover {
+  transform: scale(1.05);
+}
+
+/* Žalias mygtukas (Išsaugoti) */
+.btn-green {
+  background: transparent;
+  border-color: green;
+  color: white;
+}
+
+/* Raudonas mygtukas (Atšaukti) */
+.btn-red {
+  background: red;
+  border-color: red;
+  color: white;
+}
+
+.btn-red:hover {
+  background: darkred;
+}
+
+/* Pilkas mygtukas (Atgal) */
+.btn-gray {
+  background: transparent;
+  border-color: gray;
+  color: white;
+}
