@@ -2,10 +2,12 @@
 import { useEffect, useState, useContext } from "react";
 import api from "../api/axios";
 import { AuthContext } from "../context/auth_context";
+import { useNavigate } from "react-router-dom";
 
 export default function Admin() {
   const { user } = useContext(AuthContext);
   const [orders, setOrders] = useState([]);
+  const navigate = useNavigate();
 
   useEffect(() => {
     fetchOrders();
@@ -36,6 +38,7 @@ export default function Admin() {
   return (
     <div style={{ color: "white", padding: "20px" }}>
       <h2>Visos rezervacijos</h2>
+      <button onClick={() => navigate("/equipment")}>Atgal</button>
 
       {orders.length === 0 ? (
         <p>Nėra rezervacijų</p>
