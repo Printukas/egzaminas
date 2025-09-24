@@ -64,6 +64,7 @@ export default function Login() {
                     required
                 />
                 <button type="submit">Prisijungti</button>
+                <button onClick={() => navigate(-1)}>Atgal</button>
             </form>
         </div>
     );
