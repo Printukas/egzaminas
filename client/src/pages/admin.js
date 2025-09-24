@@ -15,7 +15,7 @@ export default function Admin() {
 
   async function fetchOrders() {
     try {
-      const res = await api.get("/orders"); // dabar vienas endpoint
+      const res = await api.get("/orders");
       setOrders(res.data);
     } catch (err) {
       console.error("Nepavyko gauti rezervacijų", err);

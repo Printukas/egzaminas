@@ -19,13 +19,11 @@ app.use(json());
 app.use(urlencoded({ extended: false }));
 app.use(express.static(join(process.cwd(), "public")));
 
-// Routes (API only)
 app.use("/", indexRoutes);
 app.use("/api/auth", authRoutes);
 app.use("/api/orders", orderRoutes);
 app.use("/api/equipment", equipmentRoutes);
 
-// Error handler (visada paskutinis)
 app.use(errorHandler);
 
 export default app;

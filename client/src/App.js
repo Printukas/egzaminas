@@ -55,7 +55,7 @@ function App() {
   return (
     <AuthProvider>
       <Router>
-        {/* Navbar rodom tik tada, jei ne Home */}
+        
         {window.location.pathname !== "/" && <Navbar />}
 
         <Routes>

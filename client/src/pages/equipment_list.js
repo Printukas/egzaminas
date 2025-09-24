@@ -48,7 +48,7 @@ export default function EquipmentList() {
     >
       <h1>Nuoma</h1>
 
-      {/* Viršutiniai mygtukai */}
+      
       {user && (
         <div
           style={{
@@ -74,7 +74,7 @@ export default function EquipmentList() {
         </div>
       )}
 
-      {/* Admin įrangos forma */}
+      
       {user?.role === "admin" && !editingItem && (
         <EquipmentForm onSave={fetchEquipment} />
       )}
@@ -90,7 +90,7 @@ export default function EquipmentList() {
         />
       )}
 
-      {/* Įrangos sąrašas */}
+      
       <div style={{ marginTop: "30px", width: "80%" }}>
         {equipment.length === 0 ? (
           <p style={{ textAlign: "center" }}>Sąrašas tuščias</p>
@@ -124,7 +124,7 @@ export default function EquipmentList() {
                   </span>
                 </h3>
 
-                {/* Tik admin mato statusą */}
+                
                 {user?.role === "admin" && (
                   <p>
                     {item.status === "published" ? (

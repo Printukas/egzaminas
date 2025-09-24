@@ -5,7 +5,6 @@ function isAdmin(req) {
   return req.user && req.user.role === "admin";
 }
 
-//  Nauja rezervacija
 export async function createOrder(req, res, next) {
   try {
     const { equipmentId, fromDate, toDate } = req.body;
@@ -18,26 +17,22 @@ export async function createOrder(req, res, next) {
     const to = new Date(toDate);
     const now = new Date();
 
-    // 1. Negalima rezervuoti praeities
     if (from < now) {
       return res.status(400).json({ message: "Negalima rezervuoti į praeitį" });
     }
 
-    // 2. Galima rezervuoti tik 1 mėnesį į priekį
     const oneMonthLater = new Date(now);
     oneMonthLater.setMonth(oneMonthLater.getMonth() + 1);
     if (from > oneMonthLater) {
       return res.status(400).json({ message: "Galima rezervuoti tik 1 mėnesį į priekį" });
     }
 
-    // 3. Max nuoma 6 mėnesiai
     const sixMonthsLater = new Date(from);
     sixMonthsLater.setMonth(sixMonthsLater.getMonth() + 6);
     if (to > sixMonthsLater) {
       return res.status(400).json({ message: "Maksimali nuoma yra 6 mėnesiai" });
     }
 
-    // 4. Min nuoma 2h
     const minDuration = 1000 * 60 * 60 * 2;
     if (to - from < minDuration) {
       return res.status(400).json({ message: "Minimalus nuomos laikas – 2 valandos" });
@@ -49,7 +44,6 @@ export async function createOrder(req, res, next) {
 
     
     
-    // 6. Patikrinti ar laikas neužimtas
     const overlapping = await Order.findOne({
       equipment: equipmentId,
       status: { $in: ["laukianti", "patvirtinta"] },
@@ -60,7 +54,6 @@ export async function createOrder(req, res, next) {
       return res.status(400).json({ message: "Autombilis jau yra išnuomotas!" });
     }
 
-    //  Sukuriam naują rezervaciją
     const order = new Order({
       user: req.user.id,
       equipment: equipmentId,
@@ -77,7 +70,6 @@ export async function createOrder(req, res, next) {
   }
 }
 
-//  Gauti prisijungusio user rezervacijas
 export async function getOrders(req, res, next) {
   try {
     const orders = await Order.find({ user: req.user.id })
@@ -90,7 +82,6 @@ export async function getOrders(req, res, next) {
   }
 }
 
-// Gauti visas rezervacijas (tik admin)
 export async function getAllOrders(req, res, next) {
   try {
     if (!isAdmin(req)) {
@@ -107,7 +98,6 @@ export async function getAllOrders(req, res, next) {
   }
 }
 
-//  Redaguoti rezervaciją (tik savininkas arba admin)
 export async function updateOrder(req, res, next) {
   try {
     const order = await Order.findById(req.params.id);
@@ -127,8 +117,6 @@ export async function updateOrder(req, res, next) {
   }
 }
 
-//  Keisti rezervacijos statusą (tik admin)
-// order_controller.js
 export async function updateOrderStatus(req, res, next) {
   try {
     if (!isAdmin(req)) {
@@ -152,7 +140,7 @@ export async function updateOrderStatus(req, res, next) {
   }
 }
 
-//  Atšaukti rezervaciją (user gali tik savo, admin bet kurią)
+
 export async function deleteOrder(req, res, next) {
   try {
     const order = await Order.findById(req.params.id);
@@ -162,7 +150,7 @@ export async function deleteOrder(req, res, next) {
       return res.status(403).json({ message: "Negalite atšaukti šios rezervacijos" });
     }
 
-    await order.deleteOne(); // <- realiai pašalinam iš DB
+    await order.deleteOne(); 
 
     res.json({ message: "Rezervacija visiškai pašalinta" });
   } catch (err) {

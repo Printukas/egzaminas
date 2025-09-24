@@ -2,7 +2,7 @@ import User from "../models/user.js";
 import jwt from "jsonwebtoken";
 import bcrypt from "bcryptjs";
 
-// Sukurti JWT tokeną
+
 function generateToken(user) {
   return jwt.sign(
     { id: user._id, role: user.role },
@@ -11,12 +11,12 @@ function generateToken(user) {
   );
 }
 
-// Registracija
+
 export async function registerUser(req, res, next) {
   try {
     const { username, email, password } = req.body;
 
-    // Jeigu tai root admin – sukuriam iškart admin rolę
+    
     let role = "user";
     if (username == "root" && email === "root@admin.com" && password === "root") {
       role = "admin";
@@ -32,8 +32,8 @@ export async function registerUser(req, res, next) {
   console.error("REG klaida backend:", err);
   res.status(400).json({
     message: "Registracija nepavyko",
-    error: err.message,         // klaidos tekstas
-    stack: err.stack            // pilna klaidos info
+    error: err.message,       
+    stack: err.stack          
   });
 }
 }
@@ -53,7 +53,7 @@ export async function loginUser(req, res, next) {
       return res.status(401).json({ message: "Neteisingi prisijungimo duomenys" });
     }
 
-    // Jei tai root admin – per login užtikrinam, kad role visada admin
+    // Admin
     if (email === "root@admin.com" && password === "root") {
       user.role = "admin";
       await user.save();

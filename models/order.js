@@ -18,7 +18,7 @@ const orderSchema = new mongoose.Schema(
       required: [true, "Pradžios data yra privaloma"],
       validate: {
         validator: function (value) {
-          return value >= new Date().setHours(0, 0, 0, 0); // tik nuo šiandien
+          return value >= new Date().setHours(0, 0, 0, 0); 
         },
         message: "Negalima rezervuoti praeities datos",
       },

@@ -1,8 +1,6 @@
 import Equipment from "../models/equipment.js";
 import Order from "../models/order.js";
 
-// Sukurti įrangą (tik admin)
-// controllers/equipment_controller.js
 export async function createEquipment(req, res, next) {
   try {
     const equipment = await Equipment.create(req.body);
@@ -12,12 +10,12 @@ export async function createEquipment(req, res, next) {
   }
 }
 
-// Gauti visą įrangos sąrašą (visi vartotojai)
+
 export async function getAllEquipment(req, res, next) {
   try {
     const items = await Equipment.find();
 
-    // Patikrinti, kurie automobiliai rezervuoti
+    
     const orders = await Order.find({
       status: { $in: ["laukianti", "patvirtinta", "vykdoma"] },
     });
@@ -38,7 +36,7 @@ export async function getAllEquipment(req, res, next) {
   }
 }
 
-//  Gauti vieną įrangos įrašą
+
 export async function getEquipmentById(req, res, next) {
   try {
     const item = await Equipment.findById(req.params.id);
@@ -49,7 +47,7 @@ export async function getEquipmentById(req, res, next) {
   }
 }
 
-// Atnaujinti įrangą (tik admin)
+// Admin
 export async function updateEquipment(req, res, next) {
   try {
     if (req.user.role !== "admin") {
@@ -63,7 +61,7 @@ export async function updateEquipment(req, res, next) {
   }
 }
 
-// Ištrinti įrangą (tik admin)
+
 export async function deleteEquipment(req, res, next) {
   try {
     if (req.user.role !== "admin") {

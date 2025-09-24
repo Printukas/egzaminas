@@ -1,5 +1,5 @@
 import { useState } from "react";
-import api from "../api/axios";  // ✅ importuojam API
+import api from "../api/axios";  
 
 export default function EquipmentForm({ initialData = null, onSave, onCancel }) {
   const [name, setName] = useState(initialData?.name || "");
