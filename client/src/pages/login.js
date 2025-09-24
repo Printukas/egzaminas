@@ -16,7 +16,7 @@ export default function Login() {
             login(res.data.token, res.data.user);
             navigate("/equipment");
         } catch (err) {
-            alert("Prisijungimas nepavyko");
+            alert("Nepavyko prisijungti");
         }
     }
 
