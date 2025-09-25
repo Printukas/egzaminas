@@ -11,7 +11,9 @@ vartotojas išsinuomoja tam tikrą automobilį tam tikrą laiką.
 - **Duomenų bazė:** MongoDB
 - **Programavimo kalbos:** HTML, CSS, JavaScript;
 - **Kiti įrankiai:** Git, Trello, Jest unit testam;
-
+- **Deployment:** frontend - Vercel, backend - Render;
+    - https://egzaminas-jddr-a6a68py71-linas-projects-34f26cb2.vercel.app/
+      
 ## Rezervacijoms taikomi ribojimai:
 - Automobilis negali būti rezervuotas du kartus tam pačiam laikui;
 - Vienas vartotojas gali išsinuomoti daug skirtingų automobilių, jei automobilis užrezervuotas, kitam vartotojui neišeis jo užrezervuoti;
@@ -61,3 +63,16 @@ vartotojas išsinuomoja tam tikrą automobilį tam tikrą laiką.
    ```bash
    git clone git@github.com:Printukas/egzaminas.git
    cd egzaminas
+2. Įdiekite npm backend'ui ir frontend'ui:
+   ```bash
+   npm install
+   // frontend
+   cd client
+   npm install
+3. Per du terminalus paleiskite:
+   ```bash
+   npm run dev
+   npm start
+   // jeigu ateina pranešimas, kad portas užimtas, paspauskite "yes", kad persijungtų į kitą
+
+
