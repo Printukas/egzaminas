@@ -72,6 +72,7 @@ export default function Register() {
           required
         />
         <button type="submit">Registruotis</button>
+        <button onClick={() => navigate(-1)}>Atgal</button>
       </form>
     </div>
   );
