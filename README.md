@@ -40,6 +40,7 @@ vartotojas išsinuomoja tam tikrą automobilį tam tikrą laiką.
      - mato visas rezervacijas ir užsirezervavusiųjų asmenų vardus bei paštą.
      - gali keisti būsenas (patvirtinta, atmesta, vykdoma, laukianti),
      - įkeltus automobilius gali paslėpti nuo paprastų vartotojų (paskelbta - vartotojai mato mašinas/juodraštis - matoma tik admin.)
+     - jo prisijungimai yra root, root@admin.com, root
 
 <img width="1294" height="496" alt="image" src="https://github.com/user-attachments/assets/e90de7cf-2d7b-4503-b9ac-d4d845bd2d3b" />
 <img width="1291" height="850" alt="image" src="https://github.com/user-attachments/assets/b756d24f-dc84-4193-96b1-709c8c2d044c" />
