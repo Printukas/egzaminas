@@ -30,51 +30,21 @@ export default function EquipmentList() {
   }
 
   return (
-    <div
-      style={{
-        minHeight: "100vh",
-        backgroundImage: "url('/road_1.jpg')",
-        backgroundSize: "cover",
-        backgroundPosition: "center",
-        display: "flex",
-        flexDirection: "column",
-        justifyContent: "flex-start",
-        alignItems: "center",
-        color: "white",
-        textShadow: "2px 2px 6px rgba(38, 32, 32, 0.7)",
-        position: "relative",
-        paddingBottom: "50px",
-      }}
-    >
-      <h1>Nuoma</h1>
+    <div className="equipment-page" style={{ backgroundImage: "url('/road_1.jpg')" }}>
+      <h1 className="equipment-header">Nuoma</h1>
 
-      
       {user && (
-        <div
-          style={{
-            position: "absolute",
-            top: "20px",
-            right: "20px",
-            zIndex: 10,
-            display: "flex",
-            gap: "10px",
-          }}
-        >
+        <div className="equipment-actions">
           {user.role === "admin" && (
-            <button onClick={() => navigate("/admin")}>
-              Rezervacijos (admin)
-            </button>
+            <button onClick={() => navigate("/admin")}>Rezervacijos (admin)</button>
           )}
           {user.role === "user" && (
-            <button onClick={() => navigate("/my-orders")}>
-              Mano rezervacijos
-            </button>
+            <button onClick={() => navigate("/my-orders")}>Mano rezervacijos</button>
           )}
           <button onClick={handleLogout}>Atsijungti</button>
         </div>
       )}
 
-      
       {user?.role === "admin" && !editingItem && (
         <EquipmentForm onSave={fetchEquipment} />
       )}
@@ -90,8 +60,7 @@ export default function EquipmentList() {
         />
       )}
 
-      
-      <div style={{ marginTop: "30px", width: "80%" }}>
+      <div className="equipment-list">
         {equipment.length === 0 ? (
           <p style={{ textAlign: "center" }}>Sąrašas tuščias</p>
         ) : (
@@ -101,65 +70,33 @@ export default function EquipmentList() {
             }
 
             return (
-              <div
-                key={item._id}
-                style={{
-                  marginBottom: "20px",
-                  padding: "20px",
-                  borderRadius: "10px",
-                  background: "rgba(9, 13, 37, 0.75)",
-                  textAlign: "left",
-                }}
-              >
-                <h3 style={{ fontSize: "22px", marginBottom: "8px" }}>
-                  {item.name}{" "}
-                  <span
-                    style={{
-                      fontSize: "16px",
-                      fontWeight: "normal",
-                      color: "#ccc",
-                    }}
-                  >
-                    – {item.description}
-                  </span>
+              <div key={item._id} className="equipment-card">
+                <h3>
+                  {item.name} <span>– {item.description}</span>
                 </h3>
 
-                
                 {user?.role === "admin" && (
                   <p>
                     {item.status === "published" ? (
-                      <span style={{ color: "lightgreen", fontWeight: "bold" }}>
-                        Paskelbta
-                      </span>
+                      <span style={{ color: "lightgreen", fontWeight: "bold" }}>Paskelbta</span>
                     ) : (
-                      <span style={{ color: "orange", fontWeight: "bold" }}>
-                        Juodraštis
-                      </span>
+                      <span style={{ color: "orange", fontWeight: "bold" }}>Juodraštis</span>
                     )}
                   </p>
                 )}
 
-                <div style={{ marginTop: "10px" }}>
+                <div className="flex-wrap">
                   {user?.role === "admin" ? (
                     <>
-                      <button onClick={() => setEditingItem(item)}>
-                        Redaguoti
-                      </button>
-                      <button
-                        onClick={() =>
-                          api.delete(`/equipment/${item._id}`).then(fetchEquipment)
-                        }
-                      >
+                      <button onClick={() => setEditingItem(item)}>Redaguoti</button>
+                      <button onClick={() => api.delete(`/equipment/${item._id}`).then(fetchEquipment)}>
                         Ištrinti
                       </button>
                       <button
                         onClick={() =>
                           api
                             .put(`/equipment/${item._id}`, {
-                              status:
-                                item.status === "published"
-                                  ? "draft"
-                                  : "published",
+                              status: item.status === "published" ? "draft" : "published",
                             })
                             .then(fetchEquipment)
                         }
@@ -171,10 +108,7 @@ export default function EquipmentList() {
                     <button
                       onClick={() =>
                         navigate("/orders", {
-                          state: {
-                            equipmentId: item._id,
-                            equipmentName: item.name,
-                          },
+                          state: { equipmentId: item._id, equipmentName: item.name },
                         })
                       }
                     >
