@@ -1,4 +1,4 @@
-import { useState, useContext } from "react";
+import { useState, useContext } from "react";//
 import api from "../api/axios";
 import { AuthContext } from "../context/auth_context";
 import { useNavigate } from "react-router-dom";
@@ -64,6 +64,7 @@ export default function Login() {
                     required
                 />
                 <button type="submit">Prisijungti</button>
+                <button onClick={() => navigate(-1)}>Atgal</button>
             </form>
         </div>
     );

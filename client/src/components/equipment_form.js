@@ -16,7 +16,7 @@ export default function EquipmentForm({ initialData = null, onSave, onCancel }) 
         await api.post("/equipment", { name, description });
       }
 
-      if (onSave) onSave(); // atnaujinti sąrašą
+      if (onSave) onSave();
     } catch (err) {
       console.error("Nepavyko išsaugoti įrangos:", err);
       alert("Klaida išsaugant įrangą");
@@ -24,34 +24,33 @@ export default function EquipmentForm({ initialData = null, onSave, onCancel }) 
   }
 
   return (
-    <form
-      onSubmit={handleSubmit}
-      style={{
-        display: "flex",
-        gap: "10px",
-        marginBottom: "20px",
-      }}
-    >
-      <input
-        type="text"
-        placeholder="Pavadinimas"
-        value={name}
-        onChange={(e) => setName(e.target.value)}
-        required
-      />
-      <input
-        type="text"
-        placeholder="Aprašymas"
-        value={description}
-        onChange={(e) => setDescription(e.target.value)}
-        required
-      />
-      <button type="submit">{initialData ? "Išsaugoti pakeitimus" : "Pridėti"}</button>
-      {onCancel && (
-        <button type="button" onClick={onCancel}>
-          Atšaukti
-        </button>
-      )}
-    </form>
+    <div className="equipment-form-wrapper">
+      <form onSubmit={handleSubmit} className="equipment-form">
+        <input
+          type="text"
+          placeholder="Pavadinimas"
+          value={name}
+          onChange={(e) => setName(e.target.value)}
+          required
+        />
+        <input
+          type="text"
+          placeholder="Aprašymas"
+          value={description}
+          onChange={(e) => setDescription(e.target.value)}
+          required
+        />
+        <div className="equipment-form-buttons">
+          <button type="submit">
+            {initialData ? "Išsaugoti pakeitimus" : "Pridėti"}
+          </button>
+          {onCancel && (
+            <button type="button" onClick={onCancel} className="btn-gray">
+              Atšaukti
+            </button>
+          )}
+        </div>
+      </form>
+    </div>
   );
 }

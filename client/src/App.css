@@ -1,4 +1,4 @@
-
+/* Bendras mygtukų stilius */
 button {
   padding: 10px 20px;
   font-size: 16px;
@@ -13,18 +13,16 @@ button {
   min-width: 100px;
 }
 
-
 button:hover {
   transform: scale(1.05);
 }
 
-
+/* Specialios spalvos */
 .btn-green {
   background: transparent;
   border-color: green;
   color: white;
 }
-
 
 .btn-red {
   background: red;
@@ -36,9 +34,159 @@ button:hover {
   background: darkred;
 }
 
-
 .btn-gray {
   background: transparent;
   border-color: gray;
   color: white;
+}
+
+/* Equipment puslapio stiliai */
+.equipment-page {
+  min-height: 100vh;
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  color: white;
+  text-shadow: 2px 2px 6px rgba(38, 32, 32, 0.7);
+  position: relative;
+  padding-bottom: 50px;
+}
+
+.equipment-header {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.equipment-actions {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  z-index: 10;
+  display: flex;
+  gap: 10px;
+}
+
+.equipment-list {
+  margin-top: 30px;
+  width: 80%;
+}
+
+.equipment-card {
+  margin-bottom: 20px;
+  padding: 20px;
+  border-radius: 10px;
+  background: rgba(9, 13, 37, 0.75);
+  text-align: left;
+}
+
+.equipment-card h3 {
+  font-size: 22px;
+  margin-bottom: 8px;
+}
+
+.equipment-card span {
+  font-size: 16px;
+  font-weight: normal;
+  color: #ccc;
+}
+
+/* Įrangos formos */
+.equipment-form-wrapper {
+  background: rgba(9, 13, 37, 0.85);
+  padding: 20px;
+  border-radius: 10px;
+  margin: 20px auto;
+  width: 80%;
+  max-width: 600px;
+}
+
+.equipment-form {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 20px 0;
+}
+
+.equipment-form input {
+  flex: 1;
+  min-width: 200px;
+  padding: 10px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  font-size: 16px;
+}
+
+.equipment-form-buttons {
+  display: flex;
+  gap: 10px;
+}
+
+/* Home puslapio tekstas */
+.home-container {
+  height: 100vh;
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  color: white;
+  text-shadow: 2px 2px 6px rgba(38, 32, 32, 0.7);
+  padding: 30px 20px;
+  text-align: center;
+}
+
+.home-container h1,
+.home-container p {
+  max-width: 800px;
+  margin-bottom: 20px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .equipment-list {
+    width: 95%;
+  }
+
+  .equipment-actions {
+    position: static;
+    margin-top: 15px;
+    justify-content: center;
+  }
+
+  .equipment-form {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .equipment-form input,
+  .equipment-form-buttons button {
+    width: 90%;
+    max-width: 300px;
+  }
+
+  .equipment-form-buttons {
+    flex-direction: column;
+    width: 100%;
+    align-items: center;
+  }
+}
+/* Datetime input pataisymai */
+input[type="datetime-local"] {
+  font-size: 14px;
+  padding: 6px;
+  max-width: 250px;   /* kad neplistų */
+  border-radius: 6px;
+  border: 1px solid #ccc;
+}
+
+/* Mažiems ekranams */
+@media (max-width: 768px) {
+  input[type="datetime-local"] {
+    width: 90%;
+    max-width: 280px; /* pakankamai siauras */
+  }
 }

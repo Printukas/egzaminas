@@ -2,6 +2,7 @@ import { useState } from "react";
 import api from "../api/axios";
 import { useNavigate } from "react-router-dom";
 
+
 export default function Register() {
   const navigate = useNavigate();
   const [username, setUsername] = useState("");
@@ -72,6 +73,7 @@ export default function Register() {
           required
         />
         <button type="submit">Registruotis</button>
+        <button onClick={() => navigate(-1)}>Atgal</button>
       </form>
     </div>
   );
