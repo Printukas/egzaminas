@@ -53,7 +53,7 @@ vartotojas išsinuomoja tam tikrą automobilį tam tikrą laiką.
 - Tik administratorius turi prieigą prie valdymo ir visų rezervacijų;
 - Slaptažodžiai saugomi bcrypt hash forma;
 - Operacijos atliekamos realiu laiku;
-- Dizainas prisitaiko prie ekrano rezoliucijos kolkas NEĮGYVENDINTA
+- Dizainas prisitaiko prie ekrano rezoliucijos
 - Pagrindinis funkcionalumas ištestuotas unit testais/dar yra testuojama
 
 ## Projekto paleidimas lokaliai
